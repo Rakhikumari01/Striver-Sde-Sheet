@@ -1,0 +1,27 @@
+Given an integer numRows, return the first numRows of Pascal's triangle.
+
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+
+        List<List<Integer>> result = new ArrayList<List<Integer>>();//to store the result
+        List<Integer> row,pre= null; // to store the values of row with the help of previous roe
+
+    for(int i=0;i<numRows;++i){  // iterating through the given number of rows
+        
+        row = new ArrayList<Integer>(); // creating new row for every iteration
+        for(int j=0;j<=i;++j)  // number of row= number of column
+            if(j==0 || j==i)  // if j is first and last column put it 1
+              row.add(1);
+
+              else
+                row.add(pre.get(j-1)+pre.get(j)); // value is just above+just above-1
+
+                pre=row;  // initialise current row = pre to calculate nxt row values
+                result.add(row); // add the row to result
+        }
+        
+        return result; // return result
+    }
+}
