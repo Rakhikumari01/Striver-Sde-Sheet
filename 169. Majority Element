@@ -1,0 +1,27 @@
+
+class Solution
+{
+    static int majorityElement(int a[], int size)
+    {
+        // your code here
+        
+        int count =0;
+        int ans=0;
+        
+        for(int i=0;i<size;i++)
+        {
+            if(count==0)
+              ans=a[i];
+              
+             if(ans==a[i])
+              count++;
+              
+              else
+              count--;
+        }
+ int count1=0;
+  for(int i=0;i<size;i++)
+  {
+      if(ans ==a[i])
+      count1++;
+  }
