@@ -1,0 +1,38 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+
+   List<List<Integer>> list = new LinkedList<>();
+
+   Arrays.sort(nums); // sort the list
+
+   for(int i=0;i<nums.length-2;i++) // i goes upto the third last element 
+   { //1est element  // condition to skip duplicates
+       if(i==0 ||   (i>0 && nums[i]!= nums[i-1]))
+       {
+           int lo =i+1,high = nums.length-1, sum = 0-nums[i];
+
+           while(lo<high)
+           {
+              if(nums[lo]+nums[high]==sum)
+              {
+                  list.add(Arrays.asList(nums[i],nums[lo],nums[high]));
+
+                                  // if from the left side two elements are same we increment lo pointer
+                  while(lo<high && nums[lo]==nums[lo+1]) lo++;
+                  while(lo<high && nums[high]== nums[high-1]) high--; // if from the right side two elements are same we decrement high pointer
+
+                  lo++;high--; // if not same both operations
+              }
+
+              else if (nums[lo] +nums[high]<sum) lo++;  // if there sum is less than target we increment low pointer
+
+              else high--; // or elese decrement high pointer
+               
+           }
+       }
+   }
+return list;
+
+        
+    }
+}
